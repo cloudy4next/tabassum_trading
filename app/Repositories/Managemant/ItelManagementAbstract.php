@@ -39,4 +39,8 @@ class ItelManagementAbstract implements ItelManagementInterface
     }
 
 
+    public function itelDailySalesSave(Request $request)
+    {   
+        dd($request->all());
+    }
 }

@@ -12,5 +12,7 @@ interface ItelManagementInterface
 {
     
     public function itelDailySales(Request $request);
+    public function itelDailySalesSave(Request $request);
 
+    
 }

@@ -19,4 +19,10 @@ class ItelController extends Controller
         // dd("val");
         return $itelManage->itelDailySales($request);
     }
+
+    public function itelSaleSave (Request $request ,ItelManagementInterface $itelManage )
+    {
+        dd($request->all());
+        return $itelManage->itelDailySalesSave($request);
+    }
 }

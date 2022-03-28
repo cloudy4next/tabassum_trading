@@ -10,7 +10,7 @@
 
 @section('content')
 @parent
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.itel.saved-daily-clossing') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="row">
 
@@ -39,7 +39,7 @@
                                  
                               <div class="form-group col-md">
                                 <label for={{ $data["name"]}} <i class="las la-phone"></i><strong>{{ $data["name"]}}</strong></label>
-                                <input id="{{ $data["name"]}}" class="prc form-control full-width "  type="number" name="{{ $data["p_name"]}}"  >
+                                <input id="{{ $data["id"]}}" class="prc form-control full-width " value="0" type="number" name="{{ $data["id"]}}"  >
                               </div>
 
                             </div>
@@ -49,7 +49,7 @@
                 <div>
                 </div>
                 <div class="card-footer text-right py-3 ">
-                    <input type="submit" class="btn btn-info btn-sm text-right py-3" value="Submit" name="submit" >
+                    <input type="submit" class="btn btn-info btn-sm text-right py-3" >
                 </div>
             </div>
         </div>

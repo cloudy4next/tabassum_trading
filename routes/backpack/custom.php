@@ -22,7 +22,7 @@ Route::group([
         Route::crud('itel-product', 'ItelProductCrudController');
 
         Route::get('itel-sales', ['as' => 'admin.itel.show-daily-clossing', 'uses' => 'ItelController@itelSale']); 
-        // Route::post('itel-daily-clossing', ['as' => 'admin.itel.saved-daily-clossing', 'uses' => 'GpProductController@GpSalesSaved']); 
+        Route::post('itel-sales-save', ['as' => 'admin.itel.saved-daily-clossing', 'uses' => 'ItelController@itelSaleSave']); 
         // Route::get('gp-report', ['as' => 'admin.gp.show-gp-report', 'uses' => 'GpProductController@GpSalesReport']); 
 
     });
