@@ -9,12 +9,15 @@
         <li class="nav-item"><a class="nav-link" href="{{ backpack_url('permission') }}"><i class="nav-icon la la-key"></i> <span>Permissions</span></a></li>
     </ul>
 </li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('itel-daily-upfront') }}'><i class="las la-balance-scale"></i> Itel Daily Upfronts</a></li>
 
 <li class="nav-item nav-dropdown">
 	<a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-mobile"></i> ITEL</a>
 	<ul class="nav-dropdown-items">
-        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('itel/itel-product') }}'><i class='nav-icon la la-question'></i> Itel products</a></li>
-        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('itel/itel-sales') }}'><i class='nav-icon la la-question'></i>Daily sales</a></li>
-        
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('itel/itel-product') }}'><i class="las la-industry"></i> Itel products</a></li>
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('itel/itel-sales') }}'><i class="las la-folder-minus"></i> Daily sales</a></li>
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('itel/itel-daily-sale') }}'><i class="las la-store"></i> Product Daily sales</a></li>
+    
     </ul>
 </li>
+

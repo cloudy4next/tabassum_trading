@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ItelDailyUpfront extends Model
+class ItelDailySales extends Model
 {
-    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
     protected $fillable = [
-        'total_product',
-        'total_upfront',
+        'product_id',
+        'upfront',
+        'daily_upfront',
+        'date',
     ];
 }

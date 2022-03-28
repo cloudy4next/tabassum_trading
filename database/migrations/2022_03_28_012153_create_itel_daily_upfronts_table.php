@@ -15,6 +15,8 @@ class CreateItelDailyUpfrontsTable extends Migration
     {
         Schema::create('itel_daily_upfronts', function (Blueprint $table) {
             $table->id();
+            $table->float('total_product')->nullable();
+            $table->float('total_upfront')->nullable();
             $table->timestamps();
         });
     }

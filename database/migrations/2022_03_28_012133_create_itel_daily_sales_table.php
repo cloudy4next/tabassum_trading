@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItelDailyClossingsTable extends Migration
+class CreateItelDailySalesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateItelDailyClossingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('itel_daily_clossings', function (Blueprint $table) {
+        Schema::create('itel_daily_sales', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id')->nullable();
             $table->foreign('product_id')->references('id')->on('itel_products')->onDelete('cascade');
+            $table->float('total_sale')->nullable();
             $table->float('daily_upfront')->nullable();
+            $table->string('date');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateItelDailyClossingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('itel_daily_clossings');
+        Schema::dropIfExists('itel_daily_sales');
     }
 }

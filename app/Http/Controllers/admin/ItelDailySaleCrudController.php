@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\ItelProductRequest;
+use App\Http\Requests\ItelDailySaleRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class ItelProductCrudController
+ * Class ItelDailySaleCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class ItelProductCrudController extends CrudController
+class ItelDailySaleCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -26,9 +26,9 @@ class ItelProductCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\ItelProduct::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/itel/itel-product');
-        CRUD::setEntityNameStrings('itel product', 'itel products');
+        CRUD::setModel(\App\Models\ItelDailySale::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/itel/itel-daily-sale');
+        CRUD::setEntityNameStrings('itel daily sale', 'itel daily sales');
         $this->crud->enableExportButtons();
 
     }
@@ -41,12 +41,13 @@ class ItelProductCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('id');
-
-        CRUD::column('name');
-        CRUD::column('distributor_price');
-        CRUD::column('retail_price');
-        CRUD::column('upfront');
+        // CRUD::column('id');
+        CRUD::column('product_id');
+        CRUD::column('total_sale');
+        CRUD::column('daily_upfront');
+        CRUD::column('date');
+        // CRUD::column('created_at');
+        // CRUD::column('updated_at');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -63,12 +64,15 @@ class ItelProductCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(ItelProductRequest::class);
+        CRUD::setValidation(ItelDailySaleRequest::class);
 
-        CRUD::field('name');
-        CRUD::field('distributor_price');
-        CRUD::field('retail_price');
-        CRUD::field('upfront');
+        CRUD::field('id');
+        CRUD::field('product_id');
+        CRUD::field('total_sale');
+        CRUD::field('daily_upfront');
+        CRUD::field('date');
+        CRUD::field('created_at');
+        CRUD::field('updated_at');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

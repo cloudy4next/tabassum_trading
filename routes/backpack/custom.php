@@ -18,9 +18,11 @@ Route::group([
 ], function () { // custom admin routes
 
 
+    Route::crud('itel-daily-upfront', 'ItelDailyUpfrontCrudController');
+
     Route::group(['prefix' => 'itel'],function (){
         Route::crud('itel-product', 'ItelProductCrudController');
-
+        Route::crud('itel-daily-sale', 'ItelDailySaleCrudController');
         Route::get('itel-sales', ['as' => 'admin.itel.show-daily-clossing', 'uses' => 'ItelController@itelSale']); 
         Route::post('itel-sales-save', ['as' => 'admin.itel.saved-daily-clossing', 'uses' => 'ItelController@itelSaleSave']); 
         // Route::get('gp-report', ['as' => 'admin.gp.show-gp-report', 'uses' => 'GpProductController@GpSalesReport']); 

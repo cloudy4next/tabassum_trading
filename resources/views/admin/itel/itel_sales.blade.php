@@ -10,7 +10,7 @@
 
 @section('content')
 @parent
-    <form action="{{ route('admin.itel.saved-daily-clossing') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.itel.saved-daily-clossing') }}" method="post" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to submit this form?');">
     @csrf
     <div class="row">
 
@@ -23,6 +23,11 @@
                     </ul>
                 </div>
             @endif
+            @if (\Session::has('failure'))
+                <div class="alert danger">
+                <p>{{ \Session::get('failure') }}</p>
+                </div>
+             @endif
             <div class="card-header">
                         <i class="la la-chevron-right"></i>  Today is :
                             <label for ="month"> {{ now()->format('D - F -  Y') }}</label>
@@ -38,7 +43,7 @@
                             <div class="form-row">
                                  
                               <div class="form-group col-md">
-                                <label for={{ $data["name"]}} <i class="las la-phone"></i><strong>{{ $data["name"]}}</strong></label>
+                                <label for={{ $data["name"]}} <i class="las la-phone"></i><span><strong>{{ $data["name"]}}</strong></span></label>
                                 <input id="{{ $data["id"]}}" class="prc form-control full-width " value="0" type="number" name="{{ $data["id"]}}"  >
                               </div>
 
@@ -49,7 +54,9 @@
                 <div>
                 </div>
                 <div class="card-footer text-right py-3 ">
-                    <input type="submit" class="btn btn-info btn-sm text-right py-3" >
+                    {{-- <input type="submit" class="btn btn-info btn-sm text-right py-3" > --}}
+                    <input type="submit" class="btn btn-info btn-sm text-right py-3"   />
+
                 </div>
             </div>
         </div>
