@@ -16,4 +16,15 @@ Route::group([
     ),
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
+
+
+    Route::group(['prefix' => 'itel'],function (){
+        Route::crud('itel-product', 'ItelProductCrudController');
+
+        Route::get('itel-sales', ['as' => 'admin.itel.show-daily-clossing', 'uses' => 'ItelController@itelSale']); 
+        // Route::post('itel-daily-clossing', ['as' => 'admin.itel.saved-daily-clossing', 'uses' => 'GpProductController@GpSalesSaved']); 
+        // Route::get('gp-report', ['as' => 'admin.gp.show-gp-report', 'uses' => 'GpProductController@GpSalesReport']); 
+
+    });
+
 }); // this should be the absolute last line of this file
