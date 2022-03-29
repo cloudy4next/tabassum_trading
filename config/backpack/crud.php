@@ -214,7 +214,7 @@ return [
         // "bem" => "Bemba",
         // "bez_TZ" => "Bena (Tanzania)",
         // "bez" => "Bena",
-        // "bn_BD" => "Bengali (Bangladesh)",
+        "bn_BD" => "Bengali (Bangladesh)",
         // "bn_IN" => "Bengali (India)",
         // "bn" => "Bengali",
         // "bs_BA" => "Bosnian (Bosnia and Herzegovina)",
