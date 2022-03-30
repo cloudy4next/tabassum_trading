@@ -21,3 +21,5 @@
     </ul>
 </li>
 
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('backup') }}'><i class='nav-icon la la-hdd-o'></i> Backups</a></li>
