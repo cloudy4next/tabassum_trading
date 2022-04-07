@@ -4,7 +4,7 @@
 namespace App\Repositories\Managemant;
 
 use App\Models\GrammenphoneProduct;
-use App\Models\GrammenphoneDailySales;
+use App\Models\GpDailySale;
 use App\Models\GrammenphoneDailyUpfront;
 
 use Illuminate\Http\Request;
@@ -42,7 +42,7 @@ class GrameenphoneAbstract implements GrameenphoneInterface
     }
 
 
-    public function grameenphoneDailySalesSave(Request $request)
+    public function gpSaleCaluation(Request $request)
     {   
         
         foreach ($request->except('_token') as $key => $part) {
@@ -51,8 +51,8 @@ class GrameenphoneAbstract implements GrameenphoneInterface
             if ($part != 0 ){
                 $upfront = GrammenphoneProduct::where('id', $key)->first("upfront");
                 $calculateUpfront = $upfront["upfront"] * $part;
-
-                $sales = new ItelDailySales;
+                // dd($calculateUpfront);
+                $sales = new GpDailySale;
                 $sales->product_id = $key;
                 $sales->total_sale = $part;
                 $sales->daily_upfront = $calculateUpfront;
@@ -64,18 +64,18 @@ class GrameenphoneAbstract implements GrameenphoneInterface
             }
 
           }
-          $saingTotalSale = $this->calcuateUpfrontDaily($currTime);
-
           \Alert::add('success', 'Sucsuessfully Saved')->flash();
+          $saingTotalSale = $this->calcuatefrontDaily($currTime);
+
           return Redirect::back();
 
     }
 
-    public function calcuateUpfrontDaily($currTime)
+    public function calcuatefrontDaily($currTime)
     {
 
-        $totalUpfront = DB::table('grammenphone_daily_sales')->where('date','=', $currTime)->sum('daily_upfront');
-        $totalProduct = DB::table('grameenphone_daily_sales')->where('date','=', $currTime)->sum('total_sale');
+        $totalUpfront = DB::table('gp_daily_sales')->where('date','=', $currTime)->sum('daily_upfront');
+        $totalProduct = DB::table('gp_daily_sales')->where('date','=', $currTime)->sum('total_sale');
         
         $totalValue = new GrammenphoneDailyUpfront;
         $totalValue->total_product = $totalProduct;

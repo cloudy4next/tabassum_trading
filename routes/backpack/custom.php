@@ -18,21 +18,24 @@ Route::group([
 ], function () { // custom admin routes
 
 
-    Route::crud('itel-daily-upfront', 'ItelDailyUpfrontCrudController');
 
     Route::group(['prefix' => 'itel'],function (){
+        Route::crud('itel-daily-upfront', 'ItelDailyUpfrontCrudController');
+
         Route::crud('itel-product', 'ItelProductCrudController');
         Route::crud('itel-daily-sale', 'ItelDailySaleCrudController');
         Route::get('itel-sales', ['as' => 'admin.itel.show-daily-clossing', 'uses' => 'ItelController@itelSale']); 
         Route::post('itel-sales-save', ['as' => 'admin.itel.saved-daily-clossing', 'uses' => 'ItelController@itelSaleSave']); 
 
     });
-    
+
     Route::group(['prefix' => 'grameenphone'],function (){
-        Route::crud('grameenphone-product', 'GrameenphoneProductCrudController');
-        Route::crud('grameenphone-dailysale', 'GrameenphoneDailysaleCrudController');
+        Route::crud('grammenphone-product', 'GrammenphoneProductCrudController');
+        Route::crud('gp-daily-sale', 'GpDailySaleCrudController');
+        Route::crud('grammenphone-daily-upfront', 'GrammenphoneDailyUpfrontCrudController');
+
         Route::get('grameenphone-sales', ['as' => 'admin.grameenphone.show-daily-clossing', 'uses' => 'GrameenphoneController@grameenphoneSale']); 
-        Route::post('grameenphone-sales-save', ['as' => 'admin.grameenphone.saved-daily-clossing', 'uses' => 'GrameenPhoneController@grameenphoneSaleSave']); 
+        Route::post('grameenphone-sales-save', ['as' => 'admin.grameenphone.saved-daily-clossing', 'uses' => 'GrameenphoneController@grameenphoneSaleSave']); 
 
     });
 

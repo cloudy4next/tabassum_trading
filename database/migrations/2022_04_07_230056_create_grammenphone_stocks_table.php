@@ -19,7 +19,7 @@ class CreateGrammenphoneStocksTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('product_id');
             $table->float('stock');
-            $table->foreign('product_id')->references('id')->on('itel_products')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('grammenphone_products')->onDelete('cascade');
             $table->float('stock_value');
             $table->timestamps();
         });

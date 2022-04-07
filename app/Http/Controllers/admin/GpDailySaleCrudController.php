@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\GrameenphoneDailysaleRequest;
+use App\Http\Requests\GpDailySaleRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class GrameenphoneDailysaleCrudController
+ * Class GpDailySaleCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class GrameenphoneDailysaleCrudController extends CrudController
+class GpDailySaleCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,11 @@ class GrameenphoneDailysaleCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\GrameenphoneDailysale::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/grameenphone-dailysale');
-        CRUD::setEntityNameStrings('grameenphone dailysale', 'grameenphone dailysales');
+        CRUD::setModel(\App\Models\GpDailySale::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/grameenphone/gp-daily-sale');
+        CRUD::setEntityNameStrings('gp daily sale', 'gp daily sales');
+        $this->crud->enableExportButtons();
+
     }
 
     /**
@@ -39,7 +41,10 @@ class GrameenphoneDailysaleCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        
+        CRUD::column('product_id');
+        CRUD::column('total_sale');
+        CRUD::column('daily_upfront');
+        CRUD::column('date');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -56,9 +61,12 @@ class GrameenphoneDailysaleCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(GrameenphoneDailysaleRequest::class);
+        CRUD::setValidation(GpDailySaleRequest::class);
 
-        
+        CRUD::field('product_id');
+        CRUD::field('total_sale');
+        CRUD::field('daily_upfront');
+        CRUD::field('date');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
