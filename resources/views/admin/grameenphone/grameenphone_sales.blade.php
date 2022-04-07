@@ -5,12 +5,12 @@
 ])
 
 
-@section('page-title', 'ITEL Daily Sales')
+@section('page-title', 'Grameenphone Daily Sales')
 
 
 @section('content')
 @parent
-    <form action="{{ route('admin.itel.saved-daily-clossing') }}" method="post" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to submit this form?');">
+    <form action="{{ route('admin.grameenphone.saved-daily-clossing') }}" method="post" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to submit this form?');">
     @csrf
     <div class="row">
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+use Illuminate\Support\Facades\Config;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -24,4 +25,20 @@ class ItelController extends Controller
     {
         return $itelManage->itelDailySalesSave($request);
     }
+
+    public function facebook_pixed (Request $request)
+    {
+        // dd(config('facebook-pixel.facebook_pixel_id'));
+
+        return view("admin.itel.fb");
+    }
+
+    #### testing 
+    // public function facebook_pixed_save (Request $request)
+    // {
+    //     // dd();
+    //     Config::set('facebook-pixel.facebook_pixel_id', $request->input('fb_id'));
+    //     dd(config('facebook-pixel.facebook_pixel_id'));
+    //     // return view("admin.itel.fb");
+    // }
 }

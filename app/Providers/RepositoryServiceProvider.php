@@ -14,6 +14,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind("App\\Repositories\\Managemant\\ItelManagementInterface", "App\\Repositories\\Managemant\\ItelManagementAbstract");
+        $this->app->bind("App\\Repositories\\Managemant\\GrameenphoneInterface", "App\\Repositories\\Managemant\\GrameenphoneAbstract");
 
     }
 
