@@ -22,7 +22,8 @@ class GrameenphoneController extends Controller
 
     public function grameenphoneSaleSave (Request $request ,GrameenphoneInterface $GPManage )
     {
-        return $GPManage->grameenphoneDailySalesSave($request);
+        // dd($request->all());
+        return $GPManage->gpSaleCaluation($request);
     }
     //
 }

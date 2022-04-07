@@ -12,7 +12,7 @@ interface GrameenphoneInterface
 {
     
     public function grameenphoneDailySales(Request $request);
-    public function grameenphoneDailySalesSave(Request $request);
+    public function gpSaleCaluation(Request $request);
 
     
 }

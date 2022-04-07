@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGrammenphoneDailySalesTable extends Migration
+class CreateGpDailySalesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateGrammenphoneDailySalesTable extends Migration
      */
     public function up()
     {
-        Schema::create('grammenphone_daily_sales', function (Blueprint $table) {
+        Schema::create('gp_daily_sales', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id')->nullable();
-            $table->foreign('product_id')->references('id')->on('itel_products')->onDelete('cascade');
+            $table->integer('product_id')->nullable();
             $table->float('total_sale')->nullable();
             $table->float('daily_upfront')->nullable();
             $table->string('date');
@@ -31,6 +30,6 @@ class CreateGrammenphoneDailySalesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grammenphone_daily_sales');
+        Schema::dropIfExists('gp_daily_sales');
     }
 }

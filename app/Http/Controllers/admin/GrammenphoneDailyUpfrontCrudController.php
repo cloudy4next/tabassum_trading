@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\GrameenphoneProductRequest;
+use App\Http\Requests\GrammenphoneDailyUpfrontRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class GrameenphoneProductCrudController
+ * Class GrammenphoneDailyUpfrontCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class GrameenphoneProductCrudController extends CrudController
+class GrammenphoneDailyUpfrontCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -26,9 +26,11 @@ class GrameenphoneProductCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\GrameenphoneProduct::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/grameenphone-product');
-        CRUD::setEntityNameStrings('grameenphone product', 'grameenphone products');
+        CRUD::setModel(\App\Models\GrammenphoneDailyUpfront::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/grameenphone/grammenphone-daily-upfront');
+        CRUD::setEntityNameStrings('grammenphone daily upfront', 'grammenphone daily upfronts');
+        $this->crud->enableExportButtons();
+
     }
 
     /**
@@ -39,7 +41,12 @@ class GrameenphoneProductCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        
+        CRUD::column('total_product');
+        CRUD::column('total_upfront');
+        $this->crud->addColumn([
+            'name' => 'updated_at',
+            'label' => 'Date',
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -56,9 +63,10 @@ class GrameenphoneProductCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(GrameenphoneProductRequest::class);
+        CRUD::setValidation(GrammenphoneDailyUpfrontRequest::class);
 
-        
+        CRUD::field('total_product');
+        CRUD::field('total_upfront');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
