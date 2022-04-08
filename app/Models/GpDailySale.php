@@ -9,6 +9,7 @@ class GpDailySale extends Model
 {
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
+    use CrudTrait; // <----- this
     protected $fillable = [
         'product_id',
         'total_sale',
