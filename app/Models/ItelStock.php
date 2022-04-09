@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ItelStock extends Model
 {
     use HasFactory;
-    use CrudTrait; // <----- this
+    // use CrudTrait; // <----- this
     protected $fillable = [
         'products_id',
         'stock',

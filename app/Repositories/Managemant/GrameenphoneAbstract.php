@@ -6,6 +6,8 @@ namespace App\Repositories\Managemant;
 use App\Models\GrammenphoneProduct;
 use App\Models\GpDailySale;
 use App\Models\GrammenphoneDailyUpfront;
+use Mail;
+use App\Mail\DailyUpfrontMail;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -65,10 +67,33 @@ class GrameenphoneAbstract implements GrameenphoneInterface
 
           }
           \Alert::add('success', 'Sucsuessfully Saved')->flash();
-          $saingTotalSale = $this->calcuatefrontDaily($currTime);
+          $savingTotalSale = $this->calcuatefrontDaily($currTime);
+          $emailAfterSendResponse = $this->SendTeamMail($savingTotalSale);
+
 
           return Redirect::back();
 
+    }
+    public function sendleadmail($emailData)
+
+    {
+         $email = 'jahangir.hossein7200@gmail.com';
+        //  $email = 'jahangir.hossein7200@gmail.com';
+
+        Mail::to($email)->send(new DailyUpfrontMail($emailData));
+
+        if (Mail::failures()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function SendTeamMail($emailData)
+    {
+        $emailResponse = $this->sendleadmail($emailData);
+
+        return response()->json(['email_send' => $emailResponse]);
     }
 
     public function calcuatefrontDaily($currTime)
@@ -81,5 +106,10 @@ class GrameenphoneAbstract implements GrameenphoneInterface
         $totalValue->total_product = $totalProduct;
         $totalValue->total_upfront = $totalUpfront;
         $totalValue->save();
+        
+        $data =array('total_product'=> $totalProduct,'total_upfront'=>$totalUpfront,'name'=>'GrameenPhone','date'=>$currTime);
+        return $data;
     }
+
+
 }

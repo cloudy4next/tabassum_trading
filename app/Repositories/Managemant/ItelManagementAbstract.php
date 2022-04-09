@@ -6,7 +6,8 @@ namespace App\Repositories\Managemant;
 use App\Models\ItelProduct;
 use App\Models\ItelDailySales;
 use App\Models\ItelDailyUpfront;
-
+use Mail;
+use App\Mail\DailyUpfrontMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -64,12 +65,36 @@ class ItelManagementAbstract implements ItelManagementInterface
             }
 
           }
-          $saingTotalSale = $this->calcuateUpfrontDaily($currTime);
+          $savingTotalSale = $this->calcuateUpfrontDaily($currTime);
+          $emailAfterSendResponse = $this->SendTeamMail($savingTotalSale);
 
           \Alert::add('success', 'Sucsuessfully Saved')->flash();
           return Redirect::back();
 
     }
+
+    public function sendleadmail($emailData)
+
+    {
+         $email = 'jahangir.hossein7200@gmail.com';
+        //  $email = 'jahangir.hossein7200@gmail.com';
+
+        Mail::to($email)->send(new DailyUpfrontMail($emailData));
+
+        if (Mail::failures()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function SendTeamMail($emailData)
+    {
+        $emailResponse = $this->sendleadmail($emailData);
+
+        return response()->json(['email_send' => $emailResponse]);
+    }
+
 
     public function calcuateUpfrontDaily($currTime)
     {
@@ -81,5 +106,8 @@ class ItelManagementAbstract implements ItelManagementInterface
         $totalValue->total_product = $totalProduct;
         $totalValue->total_upfront = $totalUpfront;
         $totalValue->save();
+                
+        $data =array('total_product'=> $totalProduct,'total_upfront'=>$totalUpfront,'name'=>'ITEL','date'=>$currTime);
+        return $data;
     }
 }

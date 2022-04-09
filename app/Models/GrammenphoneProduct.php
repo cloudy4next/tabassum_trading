@@ -9,7 +9,7 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 class GrammenphoneProduct extends Model
 {
     use CrudTrait;
-    use HasRoles;
+    // use HasRoles;
     use HasFactory;
     protected $fillable = [
         'name',
