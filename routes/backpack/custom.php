@@ -29,6 +29,13 @@ Route::group([
         Route::crud('itel-daily-sale', 'ItelDailySaleCrudController');
         Route::get('itel-sales', ['as' => 'admin.itel.show-daily-clossing', 'uses' => 'ItelController@itelSale']); 
         Route::post('itel-sales-save', ['as' => 'admin.itel.saved-daily-clossing', 'uses' => 'ItelController@itelSaleSave']); 
+        
+        Route::crud('itel-expense', 'ItelExpenseCrudController');
+
+    });
+    
+    Route::group(['prefix' => 'itel_expense'],function (){
+        Route::crud('itel-expense', 'ItelExpenseCrudController');
 
     });
 
@@ -40,10 +47,20 @@ Route::group([
         Route::get('grameenphone-sales', ['as' => 'admin.grameenphone.show-daily-clossing', 'uses' => 'GrameenphoneController@grameenphoneSale']); 
         Route::post('grameenphone-sales-save', ['as' => 'admin.grameenphone.saved-daily-clossing', 'uses' => 'GrameenphoneController@grameenphoneSaleSave']); 
 
+        Route::crud('gp-expense', 'GpExpenseCrudController');
+
     });
+
+    Route::group(['prefix' => 'gp_expense'],function (){
+
+        Route::crud('gp-expense', 'GpExpenseCrudController');
+
+    });
+
 
 # testing route
 // Route::get('fb', ['as' => 'admin.itel.fb', 'uses' => 'ItelController@facebook_pixed']); 
 // Route::post('fb-pix', ['as' => 'admin.itel.fb-pix', 'uses' => 'ItelController@facebook_pixed_save']); 
 
+    
 }); // this should be the absolute last line of this file
