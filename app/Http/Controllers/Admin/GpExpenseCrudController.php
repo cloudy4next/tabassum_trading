@@ -15,9 +15,9 @@ class GpExpenseCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -41,7 +41,7 @@ class GpExpenseCrudController extends CrudController
     {
         CRUD::column('expense_name');
         CRUD::column('amount');
-        CRUD::column('photos');
+        // CRUD::column('photos');
         // CRUD::addColumn(['name' => 'photos', 'type' => 'upload']); 
         // $this->crud->set('show.setFromDb', false);
         // $this->crud->addColumns($this->getFieldsData(TRUE));
@@ -66,15 +66,15 @@ class GpExpenseCrudController extends CrudController
         CRUD::field('expense_name');
         CRUD::field('amount');
 
-        $this->crud->addField([   // Upload
-            'name'      => 'photos',
-            'label'     => 'photos',
-            'type'      => 'upload',
-            'upload'    => true,
-            'disk'      => 'public', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;
-            // optional:
-            'temporary' => 10 // if using a service, such as S3, that requires you to make temporary URLs this will make a URL that is valid for the number of minutes specified
-        ]);
+        // $this->crud->addField([   // Upload
+        //     'name'      => 'photos',
+        //     'label'     => 'photos',
+        //     'type'      => 'upload',
+        //     'upload'    => true,
+        //     'disk'      => 'public', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;
+        //     // optional:
+        //     'temporary' => 10 // if using a service, such as S3, that requires you to make temporary URLs this will make a URL that is valid for the number of minutes specified
+        // ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

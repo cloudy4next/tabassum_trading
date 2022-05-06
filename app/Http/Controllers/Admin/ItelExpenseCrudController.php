@@ -15,9 +15,9 @@ class ItelExpenseCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    // use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -41,7 +41,7 @@ class ItelExpenseCrudController extends CrudController
     {
         CRUD::column('expense_name');
         CRUD::column('amount');
-        CRUD::column('photos');
+        // CRUD::column('photos');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -62,7 +62,7 @@ class ItelExpenseCrudController extends CrudController
 
         CRUD::field('expense_name');
         CRUD::field('amount');
-        CRUD::field('photos');
+        // CRUD::field('photos');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

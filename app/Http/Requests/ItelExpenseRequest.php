@@ -26,8 +26,8 @@ class ItelExpenseRequest extends FormRequest
     {
         return [
             'photo' => 'mimes:jpeg,bmp,png',
-            'amount'=> 'required|min:5|max:255',
-            'expense_name'=> 'required|min:5|max:255',
+            'amount'=> 'required|min:1|max:255',
+            'expense_name'=> 'required|min:1|max:255',
             // 'name' => 'required|min:5|max:255'
         ];
     }
