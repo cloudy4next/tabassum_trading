@@ -16,7 +16,7 @@ class ItelExpenseCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     // use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    // use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     // use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
@@ -29,6 +29,8 @@ class ItelExpenseCrudController extends CrudController
         CRUD::setModel(\App\Models\ItelExpense::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/itel_expense/itel-expense');
         CRUD::setEntityNameStrings('itel expense', 'itel expenses');
+        $this->crud->enableExportButtons();
+
     }
 
     /**
@@ -41,6 +43,10 @@ class ItelExpenseCrudController extends CrudController
     {
         CRUD::column('expense_name');
         CRUD::column('amount');
+        $this->crud->addColumn([
+            'name' => 'updated_at',
+            'label' => 'Date',
+        ]);
         // CRUD::column('photos');
 
         /**

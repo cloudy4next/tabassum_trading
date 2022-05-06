@@ -16,7 +16,7 @@ class GpExpenseCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     // use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    // use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     // use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
@@ -29,6 +29,8 @@ class GpExpenseCrudController extends CrudController
         CRUD::setModel(\App\Models\GpExpense::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/gp_expense/gp-expense');
         CRUD::setEntityNameStrings('gp expense', 'gp expenses');
+        $this->crud->enableExportButtons();
+
     }
 
     /**
@@ -39,8 +41,13 @@ class GpExpenseCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        
         CRUD::column('expense_name');
         CRUD::column('amount');
+        $this->crud->addColumn([
+            'name' => 'updated_at',
+            'label' => 'Date',
+        ]);
         // CRUD::column('photos');
         // CRUD::addColumn(['name' => 'photos', 'type' => 'upload']); 
         // $this->crud->set('show.setFromDb', false);
