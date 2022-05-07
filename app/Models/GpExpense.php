@@ -14,7 +14,7 @@ class GpExpense extends Model
     protected $fillable = [
         'expense_name',
         'amount',
-        'photos',
+        'photos', //as voucher number 
     ];
 
     

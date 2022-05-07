@@ -30,6 +30,7 @@ class GpExpenseCrudController extends CrudController
         CRUD::setRoute(config('backpack.base.route_prefix') . '/gp_expense/gp-expense');
         CRUD::setEntityNameStrings('gp expense', 'gp expenses');
         $this->crud->enableExportButtons();
+        
 
     }
 
@@ -41,9 +42,23 @@ class GpExpenseCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        
+        // $this->crud->addFilter([
+        //     'type'  => 'text',
+        //     'name'  => 'description',
+        //     'label' => 'Description'
+        //   ], 
+        //   false, 
+        //   function($value) { // if the filter is active
+        //     $this->crud->addClause('where', 'description', 'LIKE', "%$value%");
+        //   });
+
         CRUD::column('expense_name');
         CRUD::column('amount');
+        // CRUD::column('photos');
+        $this->crud->addColumn([
+            'name' => 'photos',
+            'label' => 'Voucher Numbers',
+        ]);
         $this->crud->addColumn([
             'name' => 'updated_at',
             'label' => 'Date',
@@ -58,6 +73,7 @@ class GpExpenseCrudController extends CrudController
          * - CRUD::column('price')->type('number');
          * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
          */
+        
     }
 
     /**
@@ -72,6 +88,11 @@ class GpExpenseCrudController extends CrudController
 
         CRUD::field('expense_name');
         CRUD::field('amount');
+        $this->crud->addField([ 
+            'name'      => 'photos',
+            'label'     => 'Voucher numbers: ',
+            'type'      => 'text', 
+        ]);
 
         // $this->crud->addField([   // Upload
         //     'name'      => 'photos',
