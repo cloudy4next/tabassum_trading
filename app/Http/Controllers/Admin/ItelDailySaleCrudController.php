@@ -42,7 +42,7 @@ class ItelDailySaleCrudController extends CrudController
     protected function setupListOperation()
     {
         // CRUD::column('id');
-        CRUD::column('product_id');/
+        // CRUD::column('product_id');
         $this->crud->addColumn([
             'name'     => 'product_id',
             'label'    => 'Product',
