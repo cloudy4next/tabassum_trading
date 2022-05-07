@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\GpDailySaleRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use App\Models\GrammenphoneProduct;
 
 /**
  * Class GpDailySaleCrudController
@@ -41,7 +42,19 @@ class GpDailySaleCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('product_id');
+
+        // CRUD::column('product_id');
+        $this->crud->addColumn([
+            'name'     => 'product_id',
+            'label'    => 'Product',
+            'type'     => 'closure',
+            'function' => function($entry) {
+                $productname = GrammenphoneProduct::where('id', $entry->product_id)->get('name');
+                return $productname[0]->name;
+            }
+        ],);
+        
+
         CRUD::column('total_sale');
         CRUD::column('daily_upfront');
         CRUD::column('date');
