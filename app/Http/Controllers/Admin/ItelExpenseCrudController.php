@@ -44,6 +44,10 @@ class ItelExpenseCrudController extends CrudController
         CRUD::column('expense_name');
         CRUD::column('amount');
         $this->crud->addColumn([
+            'name' => 'photos',
+            'label' => 'Voucher Numbers',
+        ]);
+        $this->crud->addColumn([
             'name' => 'updated_at',
             'label' => 'Date',
         ]);
@@ -68,6 +72,11 @@ class ItelExpenseCrudController extends CrudController
 
         CRUD::field('expense_name');
         CRUD::field('amount');
+        $this->crud->addField([ 
+            'name'      => 'photos',
+            'label'     => 'Voucher numbers: ',
+            'type'      => 'text', 
+        ]);
         // CRUD::field('photos');
 
         /**
