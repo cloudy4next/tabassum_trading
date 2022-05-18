@@ -77,7 +77,7 @@ class GrameenphoneAbstract implements GrameenphoneInterface
     public function sendleadmail($emailData)
 
     {
-         $email = 'jahangir.hossein7200@gmail.com';
+         $email = 'iffatabassum@gmail.com';
         //  $email = 'jahangir.hossein7200@gmail.com';
 
         Mail::to($email)->send(new DailyUpfrontMail($emailData));

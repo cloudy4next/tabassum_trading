@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\ItelDailySaleRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use App\Models\ItelProduct;
 
 /**
  * Class ItelDailySaleCrudController
@@ -48,7 +49,7 @@ class ItelDailySaleCrudController extends CrudController
             'label'    => 'Product',
             'type'     => 'closure',
             'function' => function($entry) {
-                $productname = GrammenphoneProduct::where('id', $entry->product_id)->get('name');
+                $productname = ItelProduct::where('id', $entry->product_id)->get('name');
                 return $productname[0]->name;
             }
         ],);
