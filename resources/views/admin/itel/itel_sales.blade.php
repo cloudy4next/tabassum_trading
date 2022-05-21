@@ -10,6 +10,17 @@
 
 @section('content')
 @parent
+<div class="card col-md-3">            
+    <div class="card-body">
+        <div class="form-row">
+            <div class="col">
+                <td><span><b>Total Product :</b></span></td>
+                <td><b><span id="total_sum_value"></span></b></td>
+                <span class="text-danger" id="message-error"></span>
+            </div>
+        </div>
+    </div>
+</div>
     <form action="{{ route('admin.itel.saved-daily-clossing') }}" method="post" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to submit this form?');">
     @csrf
     <div class="row">
@@ -62,17 +73,7 @@
             </div>
         </div>
     </div>
-        <div class="card col-md-3">            
-            <div class="card-body">
-                <div class="form-row">
-                    <div class="col">
-                        <td><span><b>Total Product :</b></span></td>
-                        <td><b><span id="total_sum_value"></span></b></td>
-                        <span class="text-danger" id="message-error"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
             
     </div>
 </form>
