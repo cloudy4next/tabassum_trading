@@ -13,8 +13,7 @@
     <form action="{{ route('admin.itel.saved-daily-clossing') }}" method="post" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to submit this form?');">
     @csrf
     <div class="row">
-
-        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+        <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
             <div class="card">
                 @if (\Session::has('success'))
                 <div class="alert alert-success">
@@ -35,7 +34,7 @@
 
                     </div>
                     
-                <div class="card-body">
+                <div class="card-body " id ="bodys">
                     <div class="form-row">
                         
                           <div class="col-md-8">
@@ -46,7 +45,7 @@
                                  
                               <div class="form-group col-md">
                                 <label for={{ $data["name"]}} <i class="las la-phone"></i><span><strong>{{ $data["name"]}}</strong></span></label>
-                                <input id="{{ $data["id"]}}" class="prc form-control full-width " value="0" type="number" name="{{ $data["id"]}}"  >
+                                <input id="{{ $data["id"]}}" class="prc form-control full-width amount" value="0" type="number" name="{{ $data["id"]}}"  >
                               </div>
 
                             </div>
@@ -63,7 +62,43 @@
             </div>
         </div>
     </div>
+        <div class="card col-md-3">            
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="col">
+                        <td><span><b>Total Product :</b></span></td>
+                        <td><b><span id="total_sum_value"></span></b></td>
+                        <span class="text-danger" id="message-error"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+    </div>
 </form>
 
 
 @endsection
+
+
+@push('after_scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // e.preventDefault();
+
+            $("#bodys").on('input', '.amount', function () {
+                var calculated_total_sum = 0;
+                
+                $("#bodys .amount").each(function () {
+                    var get_textbox_value = $(this).val();
+                    if ($.isNumeric(get_textbox_value)) {
+                        calculated_total_sum += parseFloat(get_textbox_value);
+                        }                  
+                        });
+                        $("#total_sum_value").html(calculated_total_sum);
+                        // console.log(calculated_total_sum);
+                });
+        })
+    </script>
+@endpush

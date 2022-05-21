@@ -14,7 +14,6 @@
 
 @section('header')
 	@parent
-    @include('facebook-pixel::head')
 	<div class="container-fluid">
 		<h2>
 			<span class="text-capitalize">  @yield('page-title') </span>
@@ -28,7 +27,7 @@
 @endsection
 
 @section('after_styles')
-	@include('facebook-pixel::head')
+	{{-- @include('facebook-pixel::head') --}}
 	<link rel="stylesheet" href="{{ asset('assets/js/jquery/select2/css/select2.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">  
 	<link rel="stylesheet" href="{{ asset('assets/css/admin-custom.css') }}">
