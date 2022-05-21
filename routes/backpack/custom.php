@@ -21,6 +21,13 @@ Route::group([
 ], function () { // custom admin routes
 
 
+    // Dashboard 
+    Route::get('dashboards', ['as' => 'admin.dashboard', 'uses' => 'dashboardController@viewDash']); 
+
+
+
+    
+    // Itel
 
     Route::group(['prefix' => 'itel'],function (){
         Route::crud('itel-daily-upfront', 'ItelDailyUpfrontCrudController');
@@ -38,6 +45,8 @@ Route::group([
         Route::crud('itel-expense', 'ItelExpenseCrudController');
 
     });
+
+    // Grameenphone
 
     Route::group(['prefix' => 'grameenphone'],function (){
         Route::crud('grammenphone-product', 'GrammenphoneProductCrudController');
@@ -57,10 +66,6 @@ Route::group([
 
     });
 
-
-# testing route
-// Route::get('fb', ['as' => 'admin.itel.fb', 'uses' => 'ItelController@facebook_pixed']); 
-// Route::post('fb-pix', ['as' => 'admin.itel.fb-pix', 'uses' => 'ItelController@facebook_pixed_save']); 
 
     
 }); // this should be the absolute last line of this file
