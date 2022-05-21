@@ -18,12 +18,30 @@ class GpExpenseCrudController extends CrudController
     // use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     // use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
-
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation { store as traitStore; }
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
      * @return void
      */
+
+
+
+    public function store()
+    {
+      // do something before validation, before save, before everything
+      $response = $this->traitStore();
+      // do something after save
+
+      // need to send mail to when expense triggres
+      $emailAfterSendResponse = $this->SendTeamMail($savingTotalSale);
+
+      return $response;
+    }
+
+
+
+
     public function setup()
     {
         CRUD::setModel(\App\Models\GpExpense::class);
@@ -33,6 +51,8 @@ class GpExpenseCrudController extends CrudController
         
 
     }
+
+    
 
     /**
      * Define what happens when the List operation is loaded.
@@ -121,4 +141,28 @@ class GpExpenseCrudController extends CrudController
     {
         $this->setupCreateOperation();
     }
+
+
+    public function sendleadmail($emailData)
+
+    {
+         $email = 'jahangir.hossein7200@gmail.com';
+        //  $email = 'jahangir.hossein7200@gmail.com';
+
+        Mail::to($email)->send(new DailyUpfrontMail($emailData));
+
+        if (Mail::failures()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function SendTeamMail($emailData)
+    {
+        $emailResponse = $this->sendleadmail($emailData);
+
+        return response()->json(['email_send' => $emailResponse]);
+    }
+
 }
