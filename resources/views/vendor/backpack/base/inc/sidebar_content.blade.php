@@ -47,7 +47,7 @@
 
 
 
-                                                                     {{-- Gp Slide bar started --}}
+                {{-- Gp Slide bar started --}}
 
                                                                      
 
@@ -85,6 +85,19 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('backup') }}'><i class='nav-icon la la-hdd-o'></i> Backups</a></li>
 @endif
 
+                                    {{-- Dropshipping --}}
+
+
+
+    
+@if(backpack_user()->hasRole('dropshipping'))
+<li class="nav-item nav-dropdown">
+	<a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-mobile"></i> Amazon</a>
+	<ul class="nav-dropdown-items">
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('aws_drop/amazon-poroduct') }}'><i class='nav-icon la la-question'></i> Amazon poroducts</a></li>   
+     </ul>
+</li>
+@endif
 
 
 
