@@ -67,7 +67,11 @@ Route::group([
     });
 
     // dropshipping //
+    Route::group(['prefix' => 'aws_drop'],function (){
 
+        Route::crud('amazon-poroduct', 'AmazonPoroductCrudController');
+
+    });
 
 
 

@@ -92,12 +92,13 @@
     
 @if(backpack_user()->hasRole('dropshipping'))
 <li class="nav-item nav-dropdown">
-	<a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-mobile"></i> GP Expense</a>
+	<a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-mobile"></i> Amazon</a>
 	<ul class="nav-dropdown-items">
-        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('gp_expense/gp-expense') }}'><i class="las la-user-tie"></i> Expense</a></li>
-    </ul>
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('aws_drop/amazon-poroduct') }}'><i class='nav-icon la la-question'></i> Amazon poroducts</a></li>   
+     </ul>
 </li>
 @endif
+
 
 
 
