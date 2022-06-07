@@ -70,11 +70,12 @@ Route::group([
 
     
     Route::group(['prefix' => 'aws_drop'],function (){
-
+        Route::crud('amazon-order', 'AmazonOrderCrudController');
         Route::crud('amazon-poroduct', 'AmazonPoroductCrudController');
         Route::crud('aamazon-bproduct', 'AamazonBproductCrudController');
 
     });
 
+    Route::get('amazon-orders', ['as' => 'admin.amazon-order', 'uses' => 'OrderMailController@mailOrder']); 
 
 }); // this should be the absolute last line of this file

@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         // $schedule->command('backup:clean')->daily()->at('23:00');
         // $schedule->command('backup:run')->daily()->at('01:58');
+        $schedule->call('App\Http\Controllers\Admin\OrderMailController@mailOrder')->everyMinute();
 
     }
 
