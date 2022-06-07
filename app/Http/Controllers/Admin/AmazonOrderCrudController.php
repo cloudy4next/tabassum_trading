@@ -26,6 +26,8 @@ class AmazonOrderCrudController extends CrudController
      */
     public function setup()
     {
+        // CRUD::button('create')->stack('top')->view('crud::buttons.create');
+
         CRUD::setModel(\App\Models\AmazonOrder::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/aws_drop/amazon-order');
         CRUD::setEntityNameStrings('amazon order', 'amazon orders');
@@ -83,4 +85,5 @@ class AmazonOrderCrudController extends CrudController
     {
         $this->setupCreateOperation();
     }
+    
 }
