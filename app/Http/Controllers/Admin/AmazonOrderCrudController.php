@@ -47,7 +47,10 @@ class AmazonOrderCrudController extends CrudController
             'label'    => 'Order ID',
         ],);
         CRUD::column('price');
-
+        $this->crud->addColumn([
+            'name'     => 'created_at',
+            'label'    => 'Order Time',
+        ],);
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
