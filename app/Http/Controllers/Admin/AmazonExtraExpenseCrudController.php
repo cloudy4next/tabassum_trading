@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\AmazonOrderRequest;
+use App\Http\Requests\AmazonExtraExpenseRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class AmazonOrderCrudController
+ * Class AmazonExtraExpenseCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class AmazonOrderCrudController extends CrudController
+class AmazonExtraExpenseCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,11 +26,9 @@ class AmazonOrderCrudController extends CrudController
      */
     public function setup()
     {
-        // CRUD::button('create')->stack('top')->view('crud::buttons.create');
-
-        CRUD::setModel(\App\Models\AmazonOrder::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/aws_drop/amazon-order');
-        CRUD::setEntityNameStrings('amazon order', 'amazon orders');
+        CRUD::setModel(\App\Models\AmazonExtraExpense::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/aws_drop/amazon-extra-expense');
+        CRUD::setEntityNameStrings('amazon extra expense', 'amazon extra expenses');
     }
 
     /**
@@ -41,16 +39,11 @@ class AmazonOrderCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        // CRUD::column('order_id');
-        $this->crud->addColumn([
-            'name'     => 'order_id',
-            'label'    => 'Order ID',
-        ],);
-        CRUD::column('price');
-        $this->crud->addColumn([
-            'name'     => 'created_at',
-            'label'    => 'Order Time',
-        ],);
+        CRUD::column('cost_name');
+        CRUD::column('cost_url');
+        CRUD::column('amount');
+        CRUD::column('card_name');
+
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -66,10 +59,20 @@ class AmazonOrderCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(AmazonOrderRequest::class);
+        CRUD::setValidation(AmazonExtraExpenseRequest::class);
 
-        CRUD::field('order_id');
-        CRUD::field('price');
+        CRUD::field('cost_name');
+        CRUD::field('cost_url');
+        CRUD::field('amount');
+        $this->crud->addField([   // select_from_array
+            'name'        => 'card_name',
+            'label'       => "Card Name",
+            'type'        => 'select_from_array',
+            'options'     => ['Visa' => 'Visa', 'Amex' => 'Amex'],
+            'allows_null' => false,
+            'default'     => 'one',
+            // 'allows_multiple' => true, // OPTIONAL; needs you to cast this to array in your model;
+        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -88,5 +91,4 @@ class AmazonOrderCrudController extends CrudController
     {
         $this->setupCreateOperation();
     }
-    
 }

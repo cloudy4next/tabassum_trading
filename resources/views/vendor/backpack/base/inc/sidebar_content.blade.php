@@ -118,7 +118,8 @@
 
             <li class='nav-item'><a class='nav-link' href='{{ backpack_url('aws_drop/aamazon-bproduct') }}'><i
                         class="las la-low-vision"></i> Banned Product</a></li>
-
+            <li class='nav-item'><a class='nav-link' href='{{ backpack_url('aws_drop/amazon-extra-expense') }}'><i
+                        class='nav-icon la la-question'></i> Amazon Expenses</a></li>
         </ul>
     </li>
 @endif

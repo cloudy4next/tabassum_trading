@@ -73,6 +73,8 @@ Route::group([
         Route::crud('amazon-order', 'AmazonOrderCrudController');
         Route::crud('amazon-poroduct', 'AmazonPoroductCrudController');
         Route::crud('aamazon-bproduct', 'AamazonBproductCrudController');
+        Route::crud('amazon-extra-expense', 'AmazonExtraExpenseCrudController');
+
 
     });
 
