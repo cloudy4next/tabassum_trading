@@ -1,6 +1,6 @@
 <!-- This file is used to store sidebar items, starting with Backpack\Base 0.9.0 -->
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('dashboard') }}"><i
-            class="la la-home nav-icon"></i> {{ trans('backpack::base.dashboard') }}</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('dashboard') }}"><i class="la la-home nav-icon"></i>
+        {{ trans('backpack::base.dashboard') }}</a></li>
 
 
 @if (backpack_user()->hasRole('Super admin'))
@@ -19,8 +19,7 @@
     </li>
 @endif
 
-
-@if (backpack_user()->hasRole('admin_itel') || backpack_user()->hasRole('Super admin'))
+{{-- @if (backpack_user()->hasRole('admin_itel') || backpack_user()->hasRole('Super admin'))
     <li class="nav-item nav-dropdown">
         <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-mobile"></i> ITEL Stock</a>
         <ul class="nav-dropdown-items">
@@ -28,9 +27,9 @@
                         class="las la-industry"></i> ITEL Products</a></li>
         </ul>
     </li>
-@endif
+@endif --}}
 
-@if (backpack_user()->hasRole('admin_itel') || backpack_user()->hasRole('Super admin'))
+{{-- @if (backpack_user()->hasRole('admin_itel') || backpack_user()->hasRole('Super admin'))
     <li class="nav-item nav-dropdown">
         <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-mobile"></i> ITEL Sales</a>
         <ul class="nav-dropdown-items">
@@ -52,20 +51,17 @@
                         class="las la-user-tie"></i> Itel expenses</a></li>
         </ul>
     </li>
-@endif
+@endif --}}
 
 
 
 {{-- Gp Slide bar started --}}
 
-
-
-@if (backpack_user()->hasRole('admin_gp') || backpack_user()->hasRole('Super admin'))
+{{-- @if (backpack_user()->hasRole('admin_gp') || backpack_user()->hasRole('Super admin'))
     <li class="nav-item nav-dropdown">
         <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-mobile"></i>GP Stock</a>
         <ul class="nav-dropdown-items">
-            <li class='nav-item'><a class='nav-link'
-                    href='{{ backpack_url('grameenphone/grammenphone-product') }}'><i
+            <li class='nav-item'><a class='nav-link' href='{{ backpack_url('grameenphone/grammenphone-product') }}'><i
                         class="las la-sim-card"></i></i> GP Products</a></li>
         </ul>
     </li>
@@ -94,7 +90,7 @@
                         class="las la-user-tie"></i> Expense</a></li>
         </ul>
     </li>
-@endif
+@endif --}}
 
 
 @if (backpack_user()->hasRole('Super admin'))
@@ -105,9 +101,7 @@
 {{-- Dropshipping --}}
 
 
-
-
-@if (backpack_user()->hasRole('dropshipping'))
+{{-- @if (backpack_user()->hasRole('dropshipping'))
     <li class="nav-item nav-dropdown">
         <a class="nav-link nav-dropdown-toggle" href="#"><i class="lab la-amazon"></i> Amazon</a>
         <ul class="nav-dropdown-items">
@@ -122,4 +116,9 @@
                         class='nav-icon la la-question'></i> Amazon Expenses</a></li>
         </ul>
     </li>
-@endif
+@endif --}}
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('polar') }}'><i class='nav-icon la la-question'></i>
+        Polars</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('polar-sms') }}'><i class='nav-icon la la-question'></i>
+        Send sms</a></li>

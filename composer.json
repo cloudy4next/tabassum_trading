@@ -16,8 +16,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravelcollective/html": "^6.3",
-        "php-imap/php-imap": "^2.0",
-        "weblagence/laravel-facebook-pixel": "^1.1"
+        "php-imap/php-imap": "^2.0"
     },
     "require-dev": {
         "backpack/generators": "^3.1",
